@@ -6,4 +6,6 @@ First compile the Apriori.cpp file with:
 ```
 g++ [file path to Apriori.cpp]
 ```
-Next run the compiled code with the file that contains the list and the minimum support level that will determine whether an itemset will be frequent or not.
+Next run the compiled code with the file that contains the list and the minimum support level (should be a number between 0-100) that will determine whether an itemset will be frequent or not.
+```
+./[file with compiled code] [list file] [minimum support level]
