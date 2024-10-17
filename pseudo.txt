@@ -1,0 +1,42 @@
+class ItemSet -> set<string> Items, int count
+
+Algorithm apriori(f, n)
+    Input file f of rows of items, number n of min support
+    Ouput all frequent itemsets
+    list -> f.open()
+    fullList -> MultiSet<ItemSet>
+    line -> file.getline()
+    while not at the end of file do
+        cur -> ItemSet
+        cur -> line.split()
+        fullList.insert(cur)
+        itemset -> list.getline()
+    allItems -> vector<map<ItemSet>>
+    total -> fullList.size()
+    for each itemset in fullList
+        for each item
+            allItems[0].insert(item)
+            if could not insert
+                allItems[0][item].addcount()
+    for each itemset in AllItems
+        if count < n/100 * total
+            AllItems[0].remove(itemset)
+    setsize -> 1
+    while it is possible to create a larger itemset do
+        prevItemset -> AllItems[setsize - 1]
+        curItemset -> set<ItemSet>
+        for each i -> 0; i < prevItemset.size; ++i do
+            for each j -> i + 1; j < prevItemset.size; ++j do 
+                temp -> prevItemset[i] + prevItemset[j]
+                if temp.size == setsize + 1
+                    curItemset.insert(temp)
+        for each i -> 0; i < curItemset.size; ++i do
+            for each j -> 0 + 1; j < fullList.size; ++j do
+                if curItemset[i] is in fullList[j]
+                    curItemset[i].addcount()
+            if curItemset[i].count() < n/100 * total
+                curItemset[i].remove()
+        allItems.push_back(curItemset)
+        ++setsize
+    return AllItems
+
